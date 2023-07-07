@@ -1,18 +1,49 @@
 {
   "name": "oscd-template-editor",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/oscd-template-editor.umd.cjs",
+  "module": "./dist/oscd-template-editor.js",
+  "exports": {
+    ".": {
+      "import": "./dist/oscd-template-editor.js",
+      "require": "./dist/oscd-template-editor.umd.cjs"
+    }
+  },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "npm run ensure-dist && concurrently npm:_dev npm:build:watch npm:preview",
+    "_dev": "vite",
+    "ensure-dist": "vite build",
+    "build:watch": "vite build --watch",
+    "preview": "vite preview --port 65531"
   },
   "dependencies": {
-    "lit": "^2.7.2"
+    "@material/mwc-button": "0.22.1",
+    "@material/mwc-checkbox": "^0.22.1",
+    "@material/mwc-fab": "0.22.1",
+    "@material/mwc-formfield": "0.22.1",
+    "@material/mwc-icon-button": "0.22.1",
+    "@material/mwc-list": "0.22.1",
+    "@material/mwc-menu": "0.22.1",
+    "@material/mwc-select": "0.22.1",
+    "@material/mwc-switch": "0.22.1",
+    "@material/mwc-textfield": "0.22.1",
+    "@openscd/open-scd-core": "^0.0.2",
+    "ace-custom-element": "^1.6.5",
+    "lit-element": "2.5.1",
+    "lit-html": "1.4.1",
+    "lit-translate": "^1.2.1",
+    "mwc-list-foundation": "link:@material/mwc-list/mwc-list-foundation",
+    "mwc-list-item": "link:@material/mwc-list/mwc-list-item"
   },
   "devDependencies": {
-    "typescript": "^5.0.2",
+    "@types/node": "^20.3.3",
+    "concurrently": "^8.2.0",
+    "typescript": "4.3.5",
     "vite": "^4.3.9"
   }
 }
