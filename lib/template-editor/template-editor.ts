@@ -15,38 +15,38 @@ import {
 } from '../foundation';
 import { styles } from './templates/foundation';
 
-import {
-  createEnumTypeWizard,
-  eNumTypeEditWizard,
-} from './templates/enumtype-wizard';
-import {
-  createDATypeWizard,
-  editDaTypeWizard,
-} from './templates/datype-wizards';
-import {
-  createDOTypeWizard,
-  dOTypeWizard,
-} from './templates/dotype-wizards';
-import {
-  createLNodeTypeWizard,
-  lNodeTypeWizard,
-} from './templates/lnodetype-wizard';
+// import {
+//   createEnumTypeWizard,
+//   eNumTypeEditWizard,
+// } from './templates/enumtype-wizard';
+// import {
+//   createDATypeWizard,
+//   editDaTypeWizard,
+// } from './templates/datype-wizards';
+// import {
+//   createDOTypeWizard,
+//   dOTypeWizard,
+// } from './templates/dotype-wizards';
+// import {
+//   createLNodeTypeWizard,
+//   lNodeTypeWizard,
+// } from './templates/lnodetype-wizard';
 
 import { List } from '@material/mwc-list';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-const templates = fetch('public/xml/templates.scd')
-  .then(response => response.text())
-  .then(str => new DOMParser().parseFromString(str, 'application/xml'));
+// const templates = fetch('public/xml/templates.scd')
+//   .then(response => response.text())
+//   .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 
-const nsd74 = fetch('public/xml/IEC_61850-7-4_2007B3.nsd')
-  .then(response => response.text())
-  .then(str => new DOMParser().parseFromString(str, 'application/xml'));
+// const nsd74 = fetch('public/xml/IEC_61850-7-4_2007B3.nsd')
+//   .then(response => response.text())
+//   .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 
-const nsd7420 = fetch('public/xml/IEC_61850-7-420_2019A4.nsd')
-  .then(response => response.text())
-  .then(str => new DOMParser().parseFromString(str, 'application/xml'));
+// const nsd7420 = fetch('public/xml/IEC_61850-7-420_2019A4.nsd')
+//   .then(response => response.text())
+//   .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 
 /** An editor [[`plugin`]] for editing the `DataTypeTemplates` section. */
 export default class TemplatesPlugin extends LitElement {
@@ -57,89 +57,129 @@ export default class TemplatesPlugin extends LitElement {
   editCount = -1;
 
   async openCreateLNodeTypeWizard(): Promise<void> {
-    this.createDataTypeTemplates();
+    // this.createDataTypeTemplates();
 
-    this.dispatchEvent(
-      newWizardEvent(
-        createLNodeTypeWizard(
-          this.doc.querySelector(':root > DataTypeTemplates')!,
-          await templates,
-          await nsd74,
-          await nsd7420
-        )
-      )
-    );
+    // this.dispatchEvent(
+    //   newWizardEvent(
+    //     createLNodeTypeWizard(
+    //       this.doc.querySelector(':root > DataTypeTemplates')!,
+    //       await templates,
+    //       await nsd74,
+    //       await nsd7420
+    //     )
+    //   )
+    // );
   }
 
   openLNodeTypeWizard(identity: string): void {
-    const wizard = lNodeTypeWizard(identity, this.doc);
-    if (wizard)
-      this.dispatchEvent(
-        newWizardEvent(() => lNodeTypeWizard(identity, this.doc)!)
-      );
+    // const wizard = lNodeTypeWizard(identity, this.doc);
+    // if (wizard)
+    //   this.dispatchEvent(
+    //     newWizardEvent(() => lNodeTypeWizard(identity, this.doc)!)
+    //   );
   }
 
   async openCreateDOTypeWizard(): Promise<void> {
     this.createDataTypeTemplates();
+    // const event = newWizardEvent(
+    //   createDOTypeWizard(
+    //     this.doc.querySelector(':root > DataTypeTemplates')!,
+    //     await templates
+    //   )
+    // )
 
-    this.dispatchEvent(
-      newWizardEvent(
-        createDOTypeWizard(
-          this.doc.querySelector(':root > DataTypeTemplates')!,
-          await templates
-        )
+    const event = new CustomEvent(
+      'oscd-wizard-creation-request', 
+      {
+        detail: {
+          parent: this.doc.querySelector(':root > DataTypeTemplates')!,
+          tagName: 'DOType',
+        },
+        composed: true,
+        bubbles: true,
+      }
       )
-    );
+    console.log({level:"dev", msg:"request do-type creation wizz", event})
+
+    this.dispatchEvent(event);
   }
 
   openDOTypeWizard(identity: string): void {
-    const wizard = dOTypeWizard(identity, this.doc);
-    if (wizard)
-      this.dispatchEvent(
-        newWizardEvent(() => dOTypeWizard(identity, this.doc)!)
-      );
+    // const wizard = dOTypeWizard(identity, this.doc);
+    // if (wizard)
+    //   this.dispatchEvent(
+    //     newWizardEvent(() => dOTypeWizard(identity, this.doc)!)
+    //   );
   }
 
   openDATypeWizard(identity: string): void {
-    const wizard = editDaTypeWizard(identity, this.doc);
-    if (wizard)
-      this.dispatchEvent(
-        newWizardEvent(() => editDaTypeWizard(identity, this.doc)!)
-      );
+    // const wizard = editDaTypeWizard(identity, this.doc);
+    // if (wizard)
+    //   this.dispatchEvent(
+    //     newWizardEvent(() => editDaTypeWizard(identity, this.doc)!)
+    //   );
+
+    const element = this.doc.querySelector(`:root > DataTypeTemplates > DAType[id="${identity.replace("#","")}"]`)
+    const event = new CustomEvent(
+      'oscd-wizard-inspection-request', 
+      {
+        detail: {
+          element
+        },
+        composed: true,
+        bubbles: true,
+      }
+      )
+    console.log({level:"dev", msg:"request da-type inspect wizz", identity, event, doc: this.doc})
+
+    this.dispatchEvent(event);
   }
 
   async openCreateDATypeWizard(): Promise<void> {
-    this.createDataTypeTemplates();
+    // this.createDataTypeTemplates();
 
-    this.dispatchEvent(
-      newWizardEvent(
-        createDATypeWizard(
-          this.doc.querySelector(':root > DataTypeTemplates')!,
-          await templates
-        )
+    // this.dispatchEvent(
+    //   newWizardEvent(
+    //     createDATypeWizard(
+    //       this.doc.querySelector(':root > DataTypeTemplates')!,
+    //       await templates
+    //     )
+    //   )
+    // );
+    const event = new CustomEvent(
+      'oscd-wizard-creation-request', 
+      {
+        detail: {
+          parent: this.doc.querySelector(':root > DataTypeTemplates')!,
+          tagName: 'DAType',
+        },
+        composed: true,
+        bubbles: true,
+      }
       )
-    );
+    console.log({level:"dev", msg:"request da-type creation wizz", event})
+    this.dispatchEvent(event);
   }
 
   openEnumTypeWizard(identity: string): void {
-    const wizard = eNumTypeEditWizard(identity, this.doc);
-    if (wizard)
-      this.dispatchEvent(
-        newWizardEvent(() => eNumTypeEditWizard(identity, this.doc)!)
-      );
+    // const wizard = eNumTypeEditWizard(identity, this.doc);
+    // if (wizard)
+    //   this.dispatchEvent(
+    //     newWizardEvent(() => eNumTypeEditWizard(identity, this.doc)!)
+    //   );
   }
 
   async openCreateEnumWizard(): Promise<void> {
-    this.createDataTypeTemplates();
+    // this.createDataTypeTemplates();
 
-    this.dispatchEvent(
-      newWizardEvent(
-        createEnumTypeWizard(
-          this.doc.querySelector(':root > DataTypeTemplates')!,
-          await templates
-        )
-      )
-    );
+    // this.dispatchEvent(
+    //   newWizardEvent(
+    //     createEnumTypeWizard(
+    //       this.doc.querySelector(':root > DataTypeTemplates')!,
+    //       await templates
+    //     )
+    //   )
+    // );
   }
 
   createDataTypeTemplates(): void {

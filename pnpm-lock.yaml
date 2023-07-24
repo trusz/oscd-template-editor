@@ -26,9 +26,6 @@ dependencies:
   '@material/mwc-menu':
     specifier: 0.22.1
     version: 0.22.1
-  '@material/mwc-select':
-    specifier: 0.22.1
-    version: 0.22.1
   '@material/mwc-switch':
     specifier: 0.22.1
     version: 0.22.1
@@ -791,26 +788,6 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@material/mwc-select@0.22.1:
-    resolution: {integrity: sha512-P5o2DD48AtEpr+ZqbFlQ04GgSmcbhOTdQEeDBkDAxSsuErXQZgzY1aPCXlaDI0QzQ/gNP/13b4ejLqstVp9SQg==}
-    dependencies:
-      '@material/dom': 12.0.0-canary.22d29cbb4.0
-      '@material/floating-label': 12.0.0-canary.22d29cbb4.0
-      '@material/line-ripple': 12.0.0-canary.22d29cbb4.0
-      '@material/list': 12.0.0-canary.22d29cbb4.0
-      '@material/mwc-base': 0.22.1
-      '@material/mwc-floating-label': 0.22.1
-      '@material/mwc-icon': 0.22.1
-      '@material/mwc-line-ripple': 0.22.1
-      '@material/mwc-list': 0.22.1
-      '@material/mwc-menu': 0.22.1
-      '@material/mwc-notched-outline': 0.22.1
-      '@material/select': 12.0.0-canary.22d29cbb4.0
-      lit-element: 2.5.1
-      lit-html: 1.4.1
-      tslib: 2.6.0
-    dev: false
-
   /@material/mwc-switch@0.22.1:
     resolution: {integrity: sha512-KDY3uqT2qTEw6Z9TS91Ucs0LViUcMsP1XHu6ZNhbv9Ai1uK/i8pwVWAIGIX9Cm1iCdjiYGfKm4DZLORDb/rfEQ==}
     dependencies:
@@ -971,28 +948,6 @@ packages:
     resolution: {integrity: sha512-f08LT0HSa0WYU+4Jz/tbm1TQ9Fcf2k+H6dPPYv0J1sZmX6hMgCEmNiUdUFLQFvszoXx2XrRi1/hIFjbz2e69Yg==}
     dependencies:
       '@material/theme': 14.0.0-canary.53b3cad2f.0
-      tslib: 2.6.0
-    dev: false
-
-  /@material/select@12.0.0-canary.22d29cbb4.0:
-    resolution: {integrity: sha512-ROpNqkHkv/ZUWNf4tWxDo/L6P2QwWaNKADSqYpg/XXecAm7NdBX5aDo63VCBPCm57JkAdBWJQB5MRrbkaWLTfA==}
-    dependencies:
-      '@material/animation': 12.0.0-canary.22d29cbb4.0
-      '@material/base': 12.0.0-canary.22d29cbb4.0
-      '@material/density': 12.0.0-canary.22d29cbb4.0
-      '@material/dom': 12.0.0-canary.22d29cbb4.0
-      '@material/feature-targeting': 12.0.0-canary.22d29cbb4.0
-      '@material/floating-label': 12.0.0-canary.22d29cbb4.0
-      '@material/line-ripple': 12.0.0-canary.22d29cbb4.0
-      '@material/list': 12.0.0-canary.22d29cbb4.0
-      '@material/menu': 12.0.0-canary.22d29cbb4.0
-      '@material/menu-surface': 12.0.0-canary.22d29cbb4.0
-      '@material/notched-outline': 12.0.0-canary.22d29cbb4.0
-      '@material/ripple': 12.0.0-canary.22d29cbb4.0
-      '@material/rtl': 12.0.0-canary.22d29cbb4.0
-      '@material/shape': 12.0.0-canary.22d29cbb4.0
-      '@material/theme': 12.0.0-canary.22d29cbb4.0
-      '@material/typography': 12.0.0-canary.22d29cbb4.0
       tslib: 2.6.0
     dev: false
 

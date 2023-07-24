@@ -19,7 +19,8 @@
     "_dev": "vite",
     "ensure-dist": "vite build",
     "build:watch": "vite build --watch",
-    "preview": "vite preview --port 65531"
+    "preview": "npm run ensure-dist && concurrently npm:_dev npm:build:watch npm:_preview",
+    "_preview": "vite preview --port 65531"
   },
   "dependencies": {
     "@material/mwc-button": "0.22.1",
@@ -29,7 +30,6 @@
     "@material/mwc-icon-button": "0.22.1",
     "@material/mwc-list": "0.22.1",
     "@material/mwc-menu": "0.22.1",
-    "@material/mwc-select": "0.22.1",
     "@material/mwc-switch": "0.22.1",
     "@material/mwc-textfield": "0.22.1",
     "@openscd/open-scd-core": "^0.0.2",

@@ -36,6 +36,7 @@ export class Demo extends LitElement {
     
     render() {
         return html`
+        <wizard-host></wizard-host>
         <open-scd
               .plugins=${this.plugins}>
         </open-scd>

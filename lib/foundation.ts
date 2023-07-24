@@ -2,12 +2,12 @@ import { LitElement, TemplateResult } from 'lit-element';
 import { directive, Part } from 'lit-html';
 
 import { List } from '@material/mwc-list';
-import { Select } from '@material/mwc-select';
+// import { Select } from '@material/mwc-select';
 import { TextField } from '@material/mwc-textfield';
 import AceEditor from 'ace-custom-element';
 
-import { WizardTextField } from './wizard-textfield.js';
-import { WizardSelect } from './wizard-select.js';
+// import { WizardTextField } from './wizard-textfield.js';
+// import { WizardSelect } from './wizard-select.js';
 import { WizardCheckbox } from './wizard-checkbox.js';
 
 export type SimpleAction = Update | Create | Replace | Delete | Move;
@@ -172,7 +172,7 @@ export function newActionEvent<T extends EditorAction>(
 export const wizardInputSelector =
   'wizard-textfield, mwc-textfield, ace-editor, mwc-select, wizard-select, wizard-checkbox';
 export type WizardInputElement =
-  | WizardTextField
+  // | WizardTextField
   | TextField
   | (AceEditor & {
       checkValidity: () => boolean;
@@ -180,8 +180,6 @@ export type WizardInputElement =
       requestUpdate(name?: PropertyKey, oldValue?: unknown): Promise<unknown>;
     })
   // TODO(c-dinkel): extend component
-  | Select
-  | WizardSelect;
 
 export type WizardAction = EditorAction | WizardFactory;
 
